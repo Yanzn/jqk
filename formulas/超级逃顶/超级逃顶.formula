@@ -1,0 +1,16 @@
+var2:=LLV(LOW,10);
+var3:=HHV(HIGH,25);
+阶段卖出: 3.2,colorcyan;
+3.5,color0088ff;
+清仓卖出: 3.5;
+动力线:= EMA((CLOSE-var2)/(var3-var2)*4,4);
+STICKLINE(动力线>REF(动力线,1) ,动力线 ,REF(动力线,1),8 ,1),colorred;
+STICKLINE(动力线<=REF(动力线,1) ,动力线 ,REF(动力线,1),8 ,1),colorgreen;
+底部:0.2,colorgreen;
+关注:0.5, coloryellow;
+DRAWICON( FILTER(CROSS(动力线,关注),20),动力线+0.02 ,1);
+DRAWICON( FILTER(CROSS(清仓卖出,动力线),20),动力线+0.02,2);
+DRAWICON( FILTER(CROSS(动力线,底部),20),动力线+0.02 ,1);
+DRAWICON( FILTER(CROSS(阶段卖出,动力线),20),动力线+0.02,2);
+强弱分界线:1.75,POINTDOT,linethick2,Color70DB93;
+数值:动力线,ColorFFFFFF;
