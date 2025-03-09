@@ -1,0 +1,16 @@
+CS:=(CLOSE-LLV(LOW,8))/(HHV(HIGH,8)-LLV(LOW,8))*100; 
+主力线:(EMA(CS,3)-50)*2; 
+极弱:-80; 
+强势:60; 
+风险:80; 
+弱势:-60; 
+主力线,COLORSTICK; 
+今日保护价:(REF(C,1)+REF(C,2)+O)/3,linethick0; 
+VAR1:=REF(CLOSE,1); 
+VAR2:=SMA(MAX(CLOSE-VAR1,0),6,1)/SMA(ABS(CLOSE-VAR1),6,1)*100; 
+STICKLINE(CROSS(75.9,VAR2),主力线+5,主力线-5,3,0),coloryellow; 
+DRAWTEXT(CROSS(主力线,78),78,'清仓'),colorred; 
+DRAWTEXT(CROSS(主力线,强势),60,'飙升'),coloryellow;
+DRAWTEXT(CROSS(主力线,0),0,'控盘'),colorwhite; 
+DRAWTEXT(CROSS(主力线,-60),-30,'回补'),colorgreen;
+DRAWTEXT(CROSS(主力线,-80),-80,'吸筹'),colorcyan;
